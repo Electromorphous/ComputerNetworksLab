@@ -1,28 +1,28 @@
 import java.io.*;
-import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
+import java.net.*;
 
 public class Client {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         Socket sock = new Socket("127.0.0.1", 4000);
-        System.out.println(" Enter the file name");
 
-        Scanner sc = new Scanner(System.in);
-        String fileName = sc.next();
+        System.out.println("Enter the file name");
+        Scanner userInput = new Scanner(System.in);
+        String fileName = userInput.nextLine();
 
         PrintWriter pWrite = new PrintWriter(sock.getOutputStream(), true);
+
         pWrite.println(fileName);
 
-        BufferedReader socketRead = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+        Scanner contentReader = new Scanner(sock.getInputStream());
 
-        String str;
-        while ((str = socketRead.readLine()) != null) {
-            System.out.println(str);
+        while (contentReader.hasNextLine()) {
+            System.out.println(contentReader.nextLine());
         }
 
-        pWrite.close();
-        socketRead.close();
-        sc.close();
         sock.close();
+        contentReader.close();
+        userInput.close();
+        pWrite.close();
     }
 }
