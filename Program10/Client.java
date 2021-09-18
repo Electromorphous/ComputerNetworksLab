@@ -5,7 +5,7 @@ public class Client {
     public static void main(String[] args) throws IOException {
         DatagramSocket sock = new DatagramSocket();
         DatagramPacket packet;
-        byte[] buffer = new byte[1024];
+        byte[] buffer;
 
         InetAddress ip = InetAddress.getByName("127.0.0.1");
         String message = "Hello, I'm client. Send me message.";
