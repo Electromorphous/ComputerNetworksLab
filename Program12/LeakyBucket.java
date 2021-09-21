@@ -38,13 +38,12 @@ public class L {
 
                 if (curBufferSize + packetSizes[count] > maxBufferSize) {
                     System.out.println("It is a non-conforming packet as buffer limit has been exceeded");
-                    break;
                 }
                 else {
                     System.out.println("It is a conforming packet");
                     curBufferSize += packetSizes[count];
-                    count++;
                 }
+                count++;
 
             }
 
