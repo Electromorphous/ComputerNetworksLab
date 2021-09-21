@@ -1,18 +1,18 @@
 set ns [new Simulator]
-set nf [open nam.nam w]
-$ns namtrace-all $nf
 set tf [open trace.tr w]
 $ns trace-all $tf
+set nf [open nam.nam w]
+$ns namtrace-all $nf
 
 set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
 
-$ns duplex-link $n0 $n2 800Kb 100ms DropTail
+$ns duplex-link $n0 $n2 10Kb 100ms DropTail
 $ns duplex-link $n1 $n2 5Mb 200ms DropTail
 
-$ns set queue-limit $n0 $n2 50
-$ns set queue-limit $n1 $n2 10
+$ns set queue-limit $n0 $n2 10
+$ns set queue-limit $n1 $n2 20
 
 set udp0 [new Agent/UDP]
 $ns attach-agent $n0 $udp0
@@ -30,15 +30,21 @@ $ns attach-agent $n2 $null
 $ns connect $udp0 $null
 $ns connect $udp1 $null
 
-$ns color 1 "red";
-$ns color 2 "blue";
+$ns color 1 "red"
+$ns color 2 "blue"
 
-$udp0 set class_ 1;
-$udp1 set class_ 2;
+$udp0 set class_ 1
+$udp1 set class_ 2
 
 $n0 label "Source 1"
 $n1 label "Source 2"
 $n2 label "Destination"
+
+# $cbr0 set packetSize_ 10Kb
+# $cbr0 set interval_ 0.01
+
+$cbr1 set packetSize_ 500Mb
+$cbr1 set interval_ 0.001
 
 proc finish {} {
     global ns nf tf
