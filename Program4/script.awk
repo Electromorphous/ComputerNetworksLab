@@ -1,12 +1,12 @@
 BEGIN {
     #include <stdio.h>
-    
-    count1 = 0
-    count2 = 0
-    pack1 = 0
-    pack2 = 0
-    time1 = 0
-    time2 = 0
+
+    count1 = 0;
+    count2 = 0;
+    pack1 = 0;
+    pack2 = 0;
+    time1 = 0;
+    time2 = 0;
 }
 {
     if ($1 == "r" && $3 == "_1_" && $4 == "AGT") {
@@ -20,7 +20,7 @@ BEGIN {
         time2 = $2;
     }
 }
-END {
-    printf("The throughput from n0 to n1: %f Mbps \n", ((count1 * pack1 * 8) / (time1 * 1000000)));
-    printf("The throughput from n1 to n2: %f Mbps \n", ((count2 * pack2 * 8) / (time2 * 1000000)));
+END  {
+    printf("Total throughput from node 0 = %f \n", (count1 * pack1 * 8) / (time1 * 1000000));
+    printf("Total throughput from node 1 = %f \n", (count2 * pack2 * 8) / (time2 * 1000000));
 }

@@ -27,6 +27,10 @@ set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
 
+$n0 label "tcp0"
+$n1 label "sink0 / tcp1"
+$n2 label "sink1"
+
 $n0 set X_ 50
 $n0 set Y_ 50
 $n0 set Z_ 0
