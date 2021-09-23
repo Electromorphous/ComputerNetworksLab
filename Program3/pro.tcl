@@ -26,7 +26,7 @@ set n5 [$ns node]
 $n5 color "blue"
 $n5 label "dest1"
 
-$ns make-lan "$n0 $n1 $n2 $n3 $n4 $n5" 50Mb 100ms LL Queue/DropTail Mac/802_3
+$ns make-lan "$n0 $n1 $n2 $n3 $n4" 50Mb 100ms LL Queue/DropTail Mac/802_3
 
 $ns duplex-link $n4 $n5 1Mb 1ms DropTail
 $ns duplex-link-op $n4 $n5 orient right
