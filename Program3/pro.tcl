@@ -45,7 +45,7 @@ $ns attach-agent $n5 $sink0
 $ns connect $tcp0 $sink0
 
 set tcp1 [new Agent/TCP]
-$ns attach-agent $n5 $tcp1
+$ns attach-agent $n2 $tcp1
 
 set ftp1 [new Application/FTP]
 $ftp1 attach-agent $tcp1
