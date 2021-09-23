@@ -21,6 +21,6 @@ BEGIN {
     }
 }
 END  {
-    printf("Total throughput from node 0 = %f \n", (count1 * pack1 * 8) / (time1 * 1000000));
-    printf("Total throughput from node 1 = %f \n", (count2 * pack2 * 8) / (time2 * 1000000));
+    printf("Total throughput from node 0 = %f Mbps \n", (count1 * pack1 * 8) / (time1 * 1000000));
+    printf("Total throughput from node 1 = %f Mbps \n", (count2 * pack2 * 8) / (time2 * 1000000));
 }
