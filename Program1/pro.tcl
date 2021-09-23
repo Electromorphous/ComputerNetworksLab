@@ -12,8 +12,8 @@ $ns duplex-link $n0 $n2 10Kb 100ms DropTail
 $ns duplex-link $n1 $n2 5Mb 200ms DropTail
 
 # maximum limit for DropTail is 10 (not sure refer the docs don't trust me I am not a reliable source)
-$ns set queue-limit $n0 $n2 10
-$ns set queue-limit $n1 $n2 5
+$ns queue-limit $n0 $n2 10
+$ns queue-limit $n1 $n2 5
 
 set udp0 [new Agent/UDP]
 $ns attach-agent $n0 $udp0
